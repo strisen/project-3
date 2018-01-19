@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Store", marketplace_path %></li>
+        <li><%= link_to "Login", login_path %></li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
