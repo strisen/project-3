@@ -18,6 +18,18 @@ Both buyers and sellers can communicate with each other at any point during or a
 ## Wireframes
 ![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/home.png)
 
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/about.png)
+
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/store.png)
+
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/uploaditem.png)
+
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/register.png)
+
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/login.png)
+
+
+
 
 * Ruby version
 
