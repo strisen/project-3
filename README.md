@@ -16,6 +16,8 @@ A typical buyer would, after catching a product that they fancy, add the item to
 Both buyers and sellers can communicate with each other at any point during or after the transaction.
 
 ## Wireframes
+![alt text](https://github.com/empludo/project-2/blob/master/app/assets/images/home.png )
+
 
 * Ruby version
 
