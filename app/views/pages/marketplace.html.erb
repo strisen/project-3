@@ -1,2 +1,24 @@
-<h1>Pages#marketplace</h1>
-<p>Find me in app/views/pages/marketplace.html.erb</p>
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+      <div class='bd-toc-item'>
+        <%= link_to "Sample Bar", "#", class: "nav-link" %>
+        <%= link_to "Buy", "#", class: "nav-link" %>
+        <%= link_to "Sell", "#", class: "nav-link" %>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+      <div class="card" style="width: 18rem;">
+        <!-- <img class="card-img-top" src='../assets/images/jewelry-background.jpg' alt="Card image cap"> -->
+        <%= image_tag 'jewelry-background.jpg', class: 'card-img-top', alt: 'third'%>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
