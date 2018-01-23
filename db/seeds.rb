@@ -6,12 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 10.times do |index|
-  new_listing = Listing.new
 
-  new_listing.name = Faker::Name.house + "'s gold"
-  new_listing.seller_name = Faker::Name.unique.name
-  new_listing.description = Faker::Lovecraft.fhtagn(index)
-  new_listing.picture = Faker::LoremPixel.image("300x200", false, 'nature')
-
-  new_park.save
+  # User.create(
+  #   username: Faker::Name.unique.name,
+  #   email: Faker::Internet.email,
+  #   balance: rand(1000)
+  # )
+  # Product.create(
+  #   name: Faker::Food.dish,
+  #   category: Faker::File.extension,
+  #   description: Faker::Food.ingredient,
+  #   price: rand(1000),
+  #   status: rand(0..3),
+  #   user_id: rand(1..10)
+  # )
+  Purchase.create(
+    user_id: rand(1..10),
+    product_id: rand(1...10)
+  )
 end
