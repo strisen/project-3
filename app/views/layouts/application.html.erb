@@ -25,12 +25,31 @@
           <li class="nav-item">
             <%= link_to "Store", marketplace_path, class: "nav-link" %>
           </li>
-          <li class="nav-item right">
-            <%= link_to "Login", login_path, class: "nav-link" %>
-          </li>
         </ul>
+
+          <%if !current_user%>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+            </ul>
+          <% else%>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                <%= link_to "Logout", destroy_user_session_path,method: :delete, class: "nav-link" %>
+              </li>
+            </ul>
+          <% end%>
+
       </div>
     </nav>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>

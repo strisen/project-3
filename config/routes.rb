@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # get 'pages/home'
   root 'pages#home'
 
@@ -9,7 +10,18 @@ Rails.application.routes.draw do
   get '/marketplace', to: 'pages#marketplace'
 
   # get 'pages/login'
-  get '/login', to: 'pages#login'
+  # get '/login', to: 'pages#login'
+
+  # devise routes
+  devise_for :users,
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      password: 'secret',
+      registration: '',
+      sign_up: 'register'
+    }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -58,3 +58,4 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'rspec-rails'
 gem 'pry' # for better rails c
 gem 'faker' # to fake data on db:seed
+gem 'devise' #authentication 
