@@ -5,6 +5,18 @@ application up and running.
 
 Things you may want to cover:
 ## User Stories
+As a newly minted single who wants to sell his recently bought engagement ring, I want a place to sell my relatively new ring at a price that more competitive than those currently being offered by pawnshops.
+
+As a recently engaged person who needs a good engagement ring but is unable or unwilling to spend money on a ring, I want a place to buy a relatively new ring of high quality at a more reasonable price.
+
+As a husband who wants to get high quality jewellery below the market rate for his wife, I want a marketplace to make such purchases.
+
+As a young female who is attending a high class function but does not have the financial ability to purchase high-grade jewellery, I want a platform to procure genuine jewellery of reasonable quality at a big discount from prices being offered by retailers.
+
+As a housewife in urgent need of cash, I need a platform to sell my jewellery at better rates than that being offered to me at pawnshops.
+
+
+
 Imagine when your engagement plans go awry, and your relationship breaks down. At that point, you probably are still left with a ring that you just bought recently, but are unable to get a buyback value even remotely close to the price that you bought it at. Our site hopes to be a platform to address that problem, by linking up buyers hoping to get a good deal for next-to-brand-new rings with sellers hoping to salvage the value of their rings that they no longer have any use for, resulting in a win-win situation for both parties.
 
 In our site, prospective buyers and sellers can view listings without registering, but must register an account if they want to engage in any form of transaction on our site. Once registered, users can make purchases, list items for sale and communicate directly with the other user they are buying from or selling to.
