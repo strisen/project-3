@@ -4,13 +4,9 @@ class ProductsController < ApplicationController
 
   end
   def show
-
      @searched_product = Product.find(params[:id]) # .find method only by id
-
   end
-
-
-def new
+  def new
     @new_product = current_user.products.new
   end
   def create
