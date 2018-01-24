@@ -1,4 +1,7 @@
 <% provide(:title, 'All products')%>
+<div class="row">
+  <%= link_to "New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
+</div>
 <p>List all the products</p>
 <ul>
   <%@all_products.each do |indiv_product| %>
@@ -15,8 +18,3 @@
 
   <%end%>
 </ul>
-<!-- <%@all_products.each{|product|} %>
-<%@all_products.each_with_index do|product,index| %>
-  <%= %>
-<%end%> -->
-<!-- <pre><%= @all_products.inspect %></pre> -->
