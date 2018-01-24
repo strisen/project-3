@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # get 'pages/home'
   root 'pages#home'
 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # get 'pages/login'
   # get '/login', to: 'pages#login'
+  resources :products
 
   # devise routes
   devise_for :users,

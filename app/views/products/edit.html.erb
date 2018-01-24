@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Edit Listing </h1>
+  <%= form_for @searched_product do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :category %>
+    <%= f.text_area :description %>
+    <%= f.text_field :price %>
+    <%= f.submit %>
+  <% end %>
+</div>
