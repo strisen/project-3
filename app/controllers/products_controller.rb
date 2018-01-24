@@ -11,10 +11,10 @@ class ProductsController < ApplicationController
 
 
 def new
-    @new_product = Product.new
+    @new_product = current_user.products.new
   end
   def create
-    Product.create(product_params)
+    @new_product = current_user.products.create(product_params)
     redirect_to products_path
   end
 
