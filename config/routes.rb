@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'charges/new'
+
+  get 'charges/create'
+
   # get 'pages/home'
   root 'pages#home'
 
@@ -23,6 +27,12 @@ Rails.application.routes.draw do
       registration: '',
       sign_up: 'register'
     }
+
+  Rails.application.routes.draw do
+    resources :charges, only: [:new, :create]
+    resources :posts
+    root to: 'posts#index'
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
