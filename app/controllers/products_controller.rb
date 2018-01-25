@@ -27,6 +27,9 @@ class ProductsController < ApplicationController
     Product.find(params[:id]).delete
     redirect_to products_path
   end
+
+  private
+  
   def product_params
     params.require(:product).permit(:name,:category, :description, :price)
   end
