@@ -29,10 +29,13 @@ Rails.application.routes.draw do
     }
 
   Rails.application.routes.draw do
-    resources :charges, only: [:new, :create]
+    resources :charges, only: [:new, :create, :show]
     resources :posts
     root to: 'posts#index'
   end
+
+  get 'thanks', to: 'charges#thanks', as: 'thanks'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

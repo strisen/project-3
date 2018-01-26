@@ -39,6 +39,12 @@
           <% else%>
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-item">
+                <%= link_to current_user.email + "'s Profile", edit_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Charges", charges_new_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "Logout", destroy_user_session_path,method: :delete, class: "nav-link" %>
               </li>
             </ul>

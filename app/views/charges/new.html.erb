@@ -6,8 +6,13 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: <%= pretty_amount(@amount) %></span>
+      <span>Amount to deposit: </span>
+      <input type="text" name="amount" class="deposit">
     </label>
+
+    <%#= label :amount %>
+    <%#= text_field :amount, class: 'form-control', placeholder: 'e.g. 40' %>
+
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
