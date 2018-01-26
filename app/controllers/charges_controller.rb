@@ -12,7 +12,22 @@ class ChargesController < ApplicationController
                                       amount: params[:amount],
                                       description: @description)
 
-    redirect_to thanks_path(:charge => charge.id)
+
+# Update database if transaction is unique and successful
+    @new_charge_id = charge.id
+    if !(Transaction.find_by(charge_id: "#{@new_charge_id}"))
+      @receipt = Stripe::Charge.retrieve(charge.id)
+      @user_balance = current_user.balance.to_f
+      @user_balance = @user_balance + (@receipt.amount/100)
+      current_user.balance = @user_balance
+      current_user.save
+      @new_transaction = Transaction.new(
+        user_id: current_user.id,
+        charge_id: @new_charge_id
+      )
+      @new_transaction.save
+    end
+    redirect_to root_path
     rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
@@ -20,12 +35,22 @@ class ChargesController < ApplicationController
 
   def thanks
     # render json: params[:charge]
-    @receipt = Stripe::Charge.retrieve(params[:charge])
-    @user_balance = current_user.balance.to_f
-    @user_balance = @user_balance + (@receipt.amount/100)
-    current_user.balance = @user_balance
-    current_user.save
+    @new_charge_id = params[:charge]
+
+    if !(Transaction.find_by(charge_id: "#{@new_charge_id}"))
+      @receipt = Stripe::Charge.retrieve(params[:charge])
+      @user_balance = current_user.balance.to_f
+      @user_balance = @user_balance + (@receipt.amount/100)
+      current_user.balance = @user_balance
+      current_user.save
+      @new_transaction = Transaction.new(
+        user_id: current_user.id,
+        charge_id: @new_charge_id
+      )
+      @new_transaction.save
+    end
     redirect_to root_path
+
     #code
     # if Stripe::Charge.list().data.first.source.name == current_user.email
     #   @receipt = Stripe::Charge.list().data.first
