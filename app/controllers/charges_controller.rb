@@ -21,6 +21,11 @@ class ChargesController < ApplicationController
   def thanks
     # render json: params[:charge]
     @receipt = Stripe::Charge.retrieve(params[:charge])
+    @user_balance = current_user.balance.to_f
+    @user_balance = @user_balance + (@receipt.amount/100)
+    current_user.balance = @user_balance
+    current_user.save
+    redirect_to root_path
     #code
     # if Stripe::Charge.list().data.first.source.name == current_user.email
     #   @receipt = Stripe::Charge.list().data.first
@@ -38,4 +43,7 @@ class ChargesController < ApplicationController
     @amount = params[:amount]
   end
 
+  def deposit_params
+    params.require(:charge).permit(:user)
+  end
 end
