@@ -30,7 +30,7 @@ class ChargesController < ApplicationController
         :email => params[:stripeEmail],
         :source => params[:stripeToken]
       )
-      begin
+
       charge = Stripe::Charge.create(
         :amount => @amount,
         :currency => 'sgd',
@@ -56,7 +56,7 @@ class ChargesController < ApplicationController
       rescue Stripe::CardError => e
         flash[:error] = e.message
         redirect_to edit_user_registration_path
-      end
+
 
 
     # customer = StripeTool.create_customer(email: params[:stripeEmail],
