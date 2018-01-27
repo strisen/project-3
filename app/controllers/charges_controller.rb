@@ -4,12 +4,13 @@ class ChargesController < ApplicationController
   end
 
   def create
+    return redirect_to edit_user_registration_path if /a-zA-Z/.match(params[:amount])
 
     customer = StripeTool.create_customer(email: params[:stripeEmail],
                                           stripe_token: params[:stripeToken])
 
     charge = StripeTool.create_charge(customer_id: customer.id,
-                                      amount: params[:amount],
+                                      amount: (params[:amount].to_f*100).to_i,
                                       description: @description)
 
 
@@ -27,10 +28,10 @@ class ChargesController < ApplicationController
       )
       @new_transaction.save
     end
-    redirect_to root_path
+    redirect_to edit_user_registration_path
     rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to edit_user_registration_path
   end
 
   def thanks
@@ -49,7 +50,7 @@ class ChargesController < ApplicationController
       )
       @new_transaction.save
     end
-    redirect_to root_path
+    redirect_to edit_user_registration_path
 
     #code
     # if Stripe::Charge.list().data.first.source.name == current_user.email
@@ -60,8 +61,10 @@ class ChargesController < ApplicationController
     # can get
   end
 
+  private
+
   def description
-    @description = "Some amazing product"
+    @description = "Purchase of E-Credit"
   end
 
   def amount_to_be_charged
