@@ -54,7 +54,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Custom Gems
 gem 'bootstrap', '~> 4.0.0'
-gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'pry' # for better rails c
 gem 'faker' # to fake data on db:seed

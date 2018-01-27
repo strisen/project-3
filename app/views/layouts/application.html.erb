@@ -39,10 +39,10 @@
           <% else%>
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-item">
-                <%= link_to current_user.email + "'s Profile ", edit_user_registration_path, class: "nav-link" %>
+                <%= link_to current_user.email + "'s Profile", edit_user_registration_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "E-Credit: $#{current_user.balance.to_i}", edit_user_registration_path, class: "nav-link" %>
+                <%= link_to "Current Balance: $#{current_user.balance.to_i}", charges_new_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "Logout", destroy_user_session_path,method: :delete, class: "nav-link" %>
@@ -52,7 +52,7 @@
 
       </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container">
       <%= yield %>
     </div>
     <p class="notice"><%= notice %></p>
