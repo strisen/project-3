@@ -57,19 +57,50 @@
         <!-- <label class="amount">Amount of E-Credit to Purchase (SGD$):</label><br>
         <input type="text" name="amount" class="mb-3"> -->
         <%= label_tag(:amount, 'Amount of E-Credit: ') %><br>
-        <%= text_field_tag(:amount, '', class:"mb-3", id:"payment") %>
+        <%= text_field_tag(:amount, '', class:"mb-3") %>
       </article>
       <article>
         <%= hidden_field_tag(:stripeToken) %>
       </article>
       <!-- <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button> -->
 
-      <script src="https://js.stripe.com/v3/"></script>
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="<%= "E-Credit Purchase" %>"
-              data-email="<%= current_user.email %>"
-              data-locale="auto"></script>
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+      <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button>
+      <script>
+        var handler = StripeCheckout.configure({
+          key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+          locale: 'auto',
+          // name: 'E-Credit Purchase',
+          email: "<%= current_user.email %>",
+          description: "E-Credit Purchase",
+          token: function(token){
+            $('input#stripeToken').val(token.id)
+            $('#payment').submit();
+          }
+        })
+
+        $('.deposit').on('click', function(e){
+          e.preventDefault();
+
+          $('#error_explanation').html('')
+
+          var amount = $('input#amount').val()
+          amount = amount.replace(/\$/g, '').replace(/\,/g,'')
+          amount = parseFloat(amount)
+
+          if (isNaN(amount)) {
+            $('#error_explanation').html('<p>Please enter a valid amount in SGD$.</p>')
+          } else {
+            amount = amount * 100
+            handler.open({
+              amount: Math.round(amount)
+            })
+          }
+        })
+        $(window).on('popstate', function(){
+          handler.close();
+        })
+      </script>
     <% end %>
 
   </div>
