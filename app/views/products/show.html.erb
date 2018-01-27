@@ -5,6 +5,7 @@
   <p><%= @searched_product.description %></p>
 
   <%=  @searched_product.price %>
+  <%= link_to "Buy Product", new_purchase_path, class: 'btn btn-info'%>
   <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger'%>
   <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info'%>
 </div>
