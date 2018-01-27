@@ -46,13 +46,14 @@
   </div>
 
   <div class="col-md-6 mb-1">
-    <%= form_tag charges_path do |f| %>
-      <article>
+    <%= form_tag charges_path, method:'post', id:'payment' do %>
+      <div id="error_explanation">
         <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
+          <p><%= flash[:error] %></p>
         <% end %>
+      </div>
+      <article>
+
         <!-- <label class="amount">Amount of E-Credit to Purchase (SGD$):</label><br>
         <input type="text" name="amount" class="mb-3"> -->
         <%= label_tag(:amount, 'Amount of E-Credit: ') %><br>
@@ -61,9 +62,11 @@
       <article>
         <%= hidden_field_tag(:stripeToken) %>
       </article>
-      <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button>
+      <!-- <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button> -->
 
       <script src="https://checkout.stripe.com/checkout.js"></script>
+      <script src="https://js.stripe.com/v3/"></script>
+      <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button>
       <script>
         var handler = StripeCheckout.configure({
           key: "<%= Rails.configuration.stripe[:publishable_key] %>",
@@ -73,12 +76,12 @@
           description: "<%= @description %>",
           token: function(token){
             $('input#stripeToken').val(token.id)
-            $('form').submit
+            $('form#payment').submit
           }
         })
 
         $('.deposit').on('click', function(e){
-          e.preventDefault()
+          e.preventDefault();
 
           $('#error_explanation').html('')
 

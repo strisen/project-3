@@ -11,7 +11,7 @@
       <input type="text" name="amount" class="deposit">
     </label>
   </article>
-  <button type="submit" class="btn btn-outline-primary">Primary</button>
+  <!-- <button type="submit" class="btn btn-outline-primary">Primary</button> -->
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="<%= @description %>"
