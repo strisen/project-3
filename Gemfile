@@ -4,8 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
-
+gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -58,4 +57,5 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'rspec-rails'
 gem 'pry' # for better rails c
 gem 'faker' # to fake data on db:seed
-gem 'devise' #authentication 
+gem 'devise' #authentication
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
