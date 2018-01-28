@@ -60,3 +60,5 @@ gem 'pry' # for better rails c
 gem 'faker' # to fake data on db:seed
 gem 'devise' #authentication
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'rails_admin', '~> 1.2' # For admin console
+gem 'cancancan', '~> 2.0' # For access restrictions

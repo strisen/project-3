@@ -28,10 +28,11 @@ Rails.application.routes.draw do
       sign_up: 'register'
     }
 
+
   Rails.application.routes.draw do
-    resources :charges, only: [:new, :create, :index]
-    resources :posts
-    root to: 'posts#index'
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+      resources :charges, only: [:new, :create, :index]
+      root to: 'posts#index'
   end
 
   get 'thanks', to: 'charges#thanks', as: 'thanks'
