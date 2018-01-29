@@ -1,0 +1,8 @@
+<% provide(:title, 'Confirm Purchase') %>
+
+<div>
+  <h3><%= @searched_product.name %></h3>
+  <p><%= @searched_product.description %></p>
+
+  <%=  @searched_product.price %>
+  <%= link_to "Confirm Purchase", purchase_path, class: 'btn btn-info'%>

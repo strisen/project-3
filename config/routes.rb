@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   # get '/login', to: 'pages#login'
   resources :products
 
+  resources :purchases
+
+  resources :carts
+
   # devise routes
   devise_for :users,
     path: '',

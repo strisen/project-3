@@ -1,0 +1,18 @@
+<h1>Purchase History</h1>
+<% @all_purchases.each do |item| %>
+
+   <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <% product = Product.find(item.product_id) %>
+
+            <span class="card-title" style="color: black;"><%= product.name %></span>
+          </div>
+           <input type="hidden" value="<%=product.id%>" class='setId'>
+          <div class="card-action">
+
+          </div>
+        </div>
+   </div>
+
+   <% end %>

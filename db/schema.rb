@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180128073700) do
+=======
+ActiveRecord::Schema.define(version: 20180128124013) do
+>>>>>>> f8127f954267d8f626427e340688bc5a9d85e8d8
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
+    t.index ["user_id"], name: "index_cart_items_on_user_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -66,7 +79,12 @@ ActiveRecord::Schema.define(version: 20180128073700) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   add_foreign_key "products", "purchases"
+=======
+  add_foreign_key "cart_items", "products"
+  add_foreign_key "cart_items", "users"
+>>>>>>> f8127f954267d8f626427e340688bc5a9d85e8d8
   add_foreign_key "products", "users"
   add_foreign_key "purchases", "products"
   add_foreign_key "purchases", "users"
