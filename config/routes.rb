@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :purchases
 
-  resources :carts
+  
 
   # devise routes
   devise_for :users,
