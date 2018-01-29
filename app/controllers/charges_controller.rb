@@ -2,34 +2,12 @@ class ChargesController < ApplicationController
   before_action :amount_to_be_charged
   before_action :authenticate_user!
   before_action :description
+
   def new
 
   end
 
   def create
-      # @amount = params[:amount]
-      # @amount = @amount.gsub('$', '').gsub(',', '')
-      #
-      # begin
-      #   @amount = Float(@amount).round(2)
-      #   p @amount
-      # rescue
-      #   flash[:error] = 'Charge not completed. Please enter a valid amount in SGD$.'
-      #   redirect_to root_path
-      #   return
-      # end
-      #
-      # @amount = (@amount * 100).to_i
-      # if @amount < 100
-      #   flash[:error] = 'Charge not completed. Amount entered must be greater than $1.'
-      #   redirect_to root_path
-      #   return
-      # end
-
-      # customer = Stripe::Customer.create(
-      #   :email => params[:stripeEmail],
-      #   :source => params[:stripeToken]
-      # )
 
       charge = Stripe::Charge.create(
         :amount => @amount,
@@ -51,14 +29,15 @@ class ChargesController < ApplicationController
         )
         @new_transaction.save
       end
-      redirect_to root_path
+      flash[:notice] = "Successfully Bought $#{@amount/100} in E-Credits!"
+      redirect_to edit_user_registration_path
 
       rescue Stripe::CardError => e
         flash[:error] = e.message
         redirect_to edit_user_registration_path
 
   end
-  
+
   private
 
   def amount_to_be_charged

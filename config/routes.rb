@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'charges/new'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  get 'charges/create'
+  resources :charges, only: [:create, :index]
+  # root to: 'posts#index'
+
+  # get 'charges/new'
+  #
+  # get 'charges/create'
 
   # get 'pages/home'
   root 'pages#home'
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
 
   # get 'pages/marketplace'
-  get '/marketplace', to: 'pages#marketplace'
+  # get '/marketplace', to: 'pages#marketplace'
 
   # get 'pages/login'
   # get '/login', to: 'pages#login'
@@ -29,13 +34,11 @@ Rails.application.routes.draw do
     }
 
 
-  Rails.application.routes.draw do
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-      resources :charges, only: [:new, :create, :index]
-      root to: 'posts#index'
-  end
+  # Rails.application.routes.draw do
 
-  get 'thanks', to: 'charges#thanks', as: 'thanks'
+  # end
+
+  # get 'thanks', to: 'charges#thanks', as: 'thanks'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

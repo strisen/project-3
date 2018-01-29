@@ -57,10 +57,15 @@
 
       </div>
     </nav>
-    <div class="container-fluid">
+    <% if notice %>
+      <div class="alert alert-primary mb-0"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger mb-0" role="alert"><%= alert %></div>
+    <% end %>
+    <div class="container-fluid pl-0 pr-0">
       <%= yield %>
     </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
   </body>
 </html>
