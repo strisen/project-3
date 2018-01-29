@@ -7,6 +7,8 @@
             <% product = Product.find(item.product_id) %>
 
             <span class="card-title" style="color: black;"><%= product.name %></span>
+            <span class="card-title" style="color: black;"><%= product.price %></span>
+            
           </div>
            <input type="hidden" value="<%=product.id%>" class='setId'>
           <div class="card-action">
