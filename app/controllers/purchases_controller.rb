@@ -1,20 +1,27 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
   def index
-    @all_purchases = Purchase.all.order(created_at: :asc)
+    @all_purchases = current_user.purchases
 
   end
   def show
-     @searched_purchase = Purchase.find(params[:id]) # .find method only by id
-     @purchases = @searched_purchase.products # ref to the product that the purchese has
+     # @current_purchase = current_user.purchases.last
+     @latest_purchase = Purchase.find(params[:id]) # .find method only by id
+
   end
   def new
     @searched_product = Product.find(params[:id])
     @new_purchase = current_user.purchases.new
   end
   def create
-    @new_purchase = current_user.purchases.create(purchase_params)
-    redirect_to purchases_path
+    @user_id = current_user.id
+    # @product_id = (params[:product][:product_id])
+    @current_product = Product.find(params[:id])
+    @current_product.add_purchase(@user_id)
+    @current_purchase = current_user.purchases.last
+    redirect_to purchase_path(@current_purchase.id)
+    # render json: @current_purchase.id
+
   end
 
   def edit

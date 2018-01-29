@@ -1,8 +1,8 @@
 <% provide(:title, 'Shopping Cart') %>
 
 <div>
-  <h3><%= @searched_purchase.user_id %></h3>
-  <p><%= @searched_purchase.product_id %></p>
+  <%= @latest_purchase %>
+
 
 
   <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger'%>
