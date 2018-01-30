@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
   belongs_to :purchase, :optional => true
-  has_many :cart_item
 
   def add_purchase(user_id)
     @current_user = User.find(user_id)
