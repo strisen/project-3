@@ -31,7 +31,6 @@ class PurchasesController < ApplicationController
     end
 
     redirect_to purchase_path(@current_purchase.id)
-    # render json: @current_purchase.id
 
   end
 
