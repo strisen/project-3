@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
   def index
     @all_products = Product.all.order(created_at: :asc)
-
+    authorize! :read, @all_products
   end
   def show
      @searched_product = Product.find(params[:id]) # .find method only by id
@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
 
   def edit
     @searched_product = Product.find(params[:id])
+    authorize! :manage, @searched_product
   end
 
   def update
@@ -30,7 +31,7 @@ class ProductsController < ApplicationController
   end
 
   private
-  
+
   def product_params
     params.require(:product).permit(:name,:category, :description, :price)
   end
