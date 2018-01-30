@@ -16,7 +16,6 @@ class PurchasesController < ApplicationController
   end
   def create
     @user_id = current_user.id
-    # @product_id = (params[:product][:product_id])
     @current_product = Product.find(params[:id])
     @current_product.add_purchase(@user_id)
     @current_purchase = current_user.purchases.last
