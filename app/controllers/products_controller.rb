@@ -23,7 +23,11 @@ class ProductsController < ApplicationController
   def update
     @searched_product = Product.find(params[:id])
     @searched_product.update(product_params)
-    redirect_to products_path
+    if current_user.admin
+      redirect_to approvals_path
+    else
+      redirect_to products_path
+    end
   end
   def destroy
     Product.find(params[:id]).delete
@@ -33,6 +37,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,:category, :description, :price)
+    params.require(:product).permit(:name,:category, :description, :price,:status)
   end
 end

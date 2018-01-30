@@ -24,6 +24,12 @@ Rails.application.routes.draw do
 
   resources :purchases
 
+  resources :approvals
+  # post 'pages/approved'
+  # post '/approved', to: 'pages#approved'
+  # post 'pages/rejected'
+  # post '/rejected', to: 'pages#rejected'
+
   # devise routes
   devise_for :users,
     path: '',

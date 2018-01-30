@@ -28,6 +28,7 @@ class PurchasesController < ApplicationController
 
   def edit
     @searched_purchase = Purchase.find(params[:id])
+    
   end
 
   def update
