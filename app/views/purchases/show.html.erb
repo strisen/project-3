@@ -1,10 +1,14 @@
-<% provide(:title, 'Shopping Cart') %>
+<h1>Purchase Confirmed</h1>
 
 <div>
-  <%= @latest_purchase %>
+  <h3>Your purchase of the product</h3>
+  <%= Product.find(@current_purchase).name %>
+  <h3>at the price of:</h3>
+  <%= Product.find(@current_purchase).price %>
+  <h3>has been confirmed. It will be sent for appriasal and we will inform you shortly</h3>
 
 
 
-  <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger'%>
-  <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info'%>
+  <%= link_to "Back to Store", products_path,class:'btn btn-info'%>
+  <%= link_to "Purchase History", purchases_path, class: 'btn btn-info'%>
 </div>

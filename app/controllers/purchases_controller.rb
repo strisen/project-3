@@ -5,8 +5,9 @@ class PurchasesController < ApplicationController
 
   end
   def show
-     # @current_purchase = current_user.purchases.last
+     @current_purchase = current_user.purchases.last.product_id
      @latest_purchase = Purchase.find(params[:id]) # .find method only by id
+     # render json: @current_purchase
 
   end
   def new
