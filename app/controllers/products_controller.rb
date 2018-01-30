@@ -23,11 +23,30 @@ class ProductsController < ApplicationController
   def update
     @searched_product = Product.find(params[:id])
     @searched_product.update(product_params)
-    if current_user.admin
-      redirect_to approvals_path
+
+    if @searched_product.status == 2
+      # Email to the buyer
+      @purchase = Purchase.find(@searched_product.purchase_id)
+      @purchasing_user = User.find(@purchase.user_id)
+      UserNotificationMailer.purchase_completion(@purchasing_user, @searched_product.name).deliver_later
+
+      # Email to the seller
+      @seller = User.find(@searched_product.user_id)
+      UserNotificationMailer.sale_completion(@seller, @searched_product.name).deliver_later
+      if current_user.admin
+        redirect_to approvals_path
+      else
+        redirect_to products_path
+      end
     else
-      redirect_to products_path
+      if current_user.admin
+        redirect_to approvals_path
+      else
+        redirect_to products_path
+      end
     end
+    # redirect_to products_path
+    # render json: :status
   end
   def destroy
     Product.find(params[:id]).delete
@@ -37,6 +56,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,:category, :description, :price,:status)
+    params.require(:product).permit(:name, :category, :description, :price, :status)
   end
 end

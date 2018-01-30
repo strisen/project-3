@@ -5,6 +5,9 @@
     <%= f.text_field :category %>
     <%= f.text_area :description %>
     <%= f.text_field :price %>
+    <% if current_user.admin %>
+      <%= f.text_field :status %>
+    <% end %>
     <%= f.submit %>
   <% end %>
 </div>
