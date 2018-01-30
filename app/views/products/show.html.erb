@@ -1,4 +1,7 @@
 <% provide(:title, 'Individual Product') %>
+<% if flash[:error].present? %>
+  <%= flash[:error] %>
+<% end %>
 
 <div>
   <h3><%= @searched_product.name %></h3>

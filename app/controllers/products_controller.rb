@@ -33,10 +33,16 @@ class ProductsController < ApplicationController
       # Email to the seller
       @seller = User.find(@searched_product.user_id)
       UserNotificationMailer.sale_completion(@seller, @searched_product.name).deliver_later
+      @seller_balance = @seller.balance + @searched_product.price
+      @seller.update( :balance => @seller_balance )
+
       if current_user.admin
         redirect_to approvals_path
+        # render json: @purchasing_user
       else
         redirect_to products_path
+        # render json: @purchasing_user
+
       end
     else
       if current_user.admin

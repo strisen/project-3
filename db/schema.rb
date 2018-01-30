@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180128073700) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.float "balance"
+    t.float "balance", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
