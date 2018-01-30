@@ -28,13 +28,14 @@ class PurchasesController < ApplicationController
 
       UserNotificationMailer.sale_notification(@product_owner, @current_product.name).deliver_later
     end
-
+    @current_product.update( :status => 1 )
     redirect_to purchase_path(@current_purchase.id)
 
   end
 
   def edit
     @searched_purchase = Purchase.find(params[:id])
+
   end
 
   def update

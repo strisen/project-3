@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Change Status </h1>
+  <h2>Key: 0: Listed 1: Pending 2: Approved 3: Rejected </h2>
+  <%= form_for @searched_product do |f| %>
+    <%= f.text_field :status %>
+<%= f.submit %>
+<% end %>
+</div>

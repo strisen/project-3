@@ -1,19 +1,19 @@
 <% provide(:title, 'All products')%>
 <div class="row">
-  <%= link_to "New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
+
 </div>
-<p>List all the products</p>
+<p>Approval of products</p>
 <ul>
   <%@all_products.each do |indiv_product| %>
 
-    <% if indiv_product.status == 0 %>
+    <% if indiv_product.status == 1 %>
       <li>
         <h3><%= indiv_product.name %></h3>
         <p>
           <%= indiv_product.description %><br>
           <%= indiv_product.user.username %><br>
 
-          <%= link_to "View", product_path(indiv_product), class: "btn btn-primary"%>
+          <%= link_to "Change Approval Status",edit_approval_path(indiv_product), class: "btn btn-primary"%>
           <%#= link_to "Add to Cart",  carts_path(indiv_product), method: :create, class: 'btn btn-info'%>
         </p>
       </li>
