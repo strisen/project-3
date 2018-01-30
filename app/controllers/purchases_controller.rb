@@ -15,20 +15,25 @@ class PurchasesController < ApplicationController
     @new_purchase = current_user.purchases.new
   end
   def create
+
     @user_id = current_user.id
     # @product_id = (params[:product][:product_id])
     @current_product = Product.find(params[:id])
-    @current_product.add_purchase(@user_id)
-    @current_purchase = current_user.purchases.last
-    @current_product.update( :status => 1)
-    redirect_to purchase_path(@current_purchase.id)
+    if @current_product.status != 0
+      redirect_to products_path
+    else
+      @current_product.add_purchase(@user_id)
+      @current_purchase = current_user.purchases.last
+      @current_product.update( :status => 1)
+      redirect_to purchase_path(@current_purchase.id)
+    end 
     # render json: @current_product
 
   end
 
   def edit
     @searched_purchase = Purchase.find(params[:id])
-    
+
   end
 
   def update
