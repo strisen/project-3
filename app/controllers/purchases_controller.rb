@@ -15,7 +15,7 @@ class PurchasesController < ApplicationController
     @new_purchase = current_user.purchases.new
   end
   def create
-<<<<<<< HEAD
+
     # Send an email to the user after purchase has been saved
     @user = current_user
     @current_product = Product.find(params[:id])
@@ -39,28 +39,8 @@ class PurchasesController < ApplicationController
       redirect_to product_path(@current_product.id)
       flash[:alert] = "You do not have sufficient funds"
     end
-
-=======
-
-    @user_id = current_user.id
-    @current_product = Product.find(params[:id])
-    if @current_product.status != 0
-      redirect_to products_path
-    else
-      @current_product.add_purchase(@user_id)
-      @current_purchase = current_user.purchases.last
-      @product_owner = User.find(@current_product.user_id)
-      UserNotificationMailer.purchase_notification(current_user, @current_product.name).deliver_later
-
-      UserNotificationMailer.sale_notification(@product_owner, @current_product.name).deliver_later
-      @current_product.update( :status => 1)
-      redirect_to purchase_path(@current_purchase.id)
-    end
-
-
-
     # render json: @current_product
->>>>>>> 43a3e8ee387dc5d887cdbbb4291f6ea19b0411be
+
 
   end
 
