@@ -24,8 +24,6 @@ Rails.application.routes.draw do
 
   resources :purchases
 
-  
-
   # devise routes
   devise_for :users,
     path: '',
