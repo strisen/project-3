@@ -23,22 +23,16 @@ class PurchasesController < ApplicationController
     else
       @current_product.add_purchase(@user_id)
       @current_purchase = current_user.purchases.last
-      @current_product.update( :status => 1)
-      redirect_to purchase_path(@current_purchase.id)
-    end
-    @current_product.add_purchase(@user_id)
-    @current_purchase = current_user.purchases.last
-    @product_owner = User.find(@current_product.user_id)
-
-    # Send an email to the user after purchase has been saved
-    # @user = current_user
-    if @current_purchase
+      @product_owner = User.find(@current_product.user_id)
       UserNotificationMailer.purchase_notification(current_user, @current_product.name).deliver_later
 
       UserNotificationMailer.sale_notification(@product_owner, @current_product.name).deliver_later
+      @current_product.update( :status => 1)
+      redirect_to purchase_path(@current_purchase.id)
     end
-    @current_product.update( :status => 1 )
-    redirect_to purchase_path(@current_purchase.id)
+
+
+
     # render json: @current_product
 
   end
