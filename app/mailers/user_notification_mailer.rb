@@ -15,4 +15,18 @@ class UserNotificationMailer < ApplicationMailer
     mail(to:@user.email, subject: "Sale of #{@product} has been requested!")
   end
 
+  def purchase_completion(user, product)
+    @user = user
+    @product = product
+    @url = 'http://localhost:3000/edit'
+    mail(to:@user.email, subject: "Delivery of #{@product} has been processed!")
+  end
+
+  def sale_completion(user, product)
+    @user = user
+    @product = product
+    @url = 'http://localhost:3000/edit'
+    mail(to:@user.email, subject: "Sale of #{@product} has been completed!")
+  end
+
 end
