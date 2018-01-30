@@ -20,8 +20,10 @@ class Product < ApplicationRecord
     @cart_id = @cart_item[0].id
   end
 
-  def change_status(stock_status_id)
-    @product = Product.find(self.id)
+  def change_status
+    @product_status = Product.find(self.id)
+  
+
 
   end
   def product_id

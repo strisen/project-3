@@ -20,8 +20,9 @@ class PurchasesController < ApplicationController
     @current_product = Product.find(params[:id])
     @current_product.add_purchase(@user_id)
     @current_purchase = current_user.purchases.last
+    @current_product.update( :status => 1)
     redirect_to purchase_path(@current_purchase.id)
-    # render json: @current_purchase.id
+    # render json: @current_product
 
   end
 
