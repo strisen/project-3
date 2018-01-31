@@ -2,9 +2,16 @@
 <div class="row">
   <%= link_to "New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
 </div>
-<div class="mb-3">
-  <p>List all the products</p>
-  <%= paginate @all_products, window: 2 %>
+<div class="col-md-6 mt-3 mb-3">
+  <%= paginate @all_products %>
+  <table>
+    <tr>
+      <th> <%= sort_link @search, :name, "Product Name"%></th>
+      <th> <%= sort_link @search, :category,  "Category" %></th>
+      <th> <%= sort_link @search, :created_at,  "Created At"%></th>
+    </tr>
+  </table>
+
 </div>
 <ul>
   <%@all_products.each do |indiv_product| %>
@@ -15,12 +22,11 @@
         <p>
           <%= indiv_product.description %><br>
           <%= indiv_product.user.username %><br>
-
+          <%= indiv_product.category %><br>
           <%= link_to "View", product_path(indiv_product), class: "btn btn-primary"%>
           <%#= link_to "Add to Cart",  carts_path(indiv_product), method: :create, class: 'btn btn-info'%>
         </p>
       </li>
       <%end%>
-
   <%end%>
 </ul>

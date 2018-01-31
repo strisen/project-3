@@ -12,9 +12,13 @@
   #   email: Faker::Internet.email,
   #   balance: rand(1000)
   # )
+  category = {
+    0 => 'Ring',
+    1 => 'Necklace'
+  }
   Product.create(
     name: Faker::Food.dish,
-    category: Faker::File.extension,
+    category: category[rand(0..1)],
     description: Faker::Food.ingredient,
     price: rand(1000),
     status: 0,#rand(0..3),

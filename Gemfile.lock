@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 8b36204916a0d3c3950cd1fc2e9cdb1f81e61ea5
+  specs:
+    ransack (1.8.6)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3.2)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: f6484e3240e9277230702beefbdcecc42d9efda0
   specs:
@@ -150,6 +161,8 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    polyamorous (1.3.3)
+      activerecord (>= 3.0)
     popper_js (1.12.9)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -296,6 +309,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails_admin (~> 1.2)
+  ransack!
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver

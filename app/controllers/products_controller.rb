@@ -4,9 +4,10 @@ class ProductsController < ApplicationController
 
   def index
     # @all_products = Product.all.order(created_at: :asc)
-    @all_products = Product.order('created_at DESC').page(params[:page]).per(5)
-
-    # @all_products = Kaminari.paginate_array(@all_products).page(params[:page]).per(5)
+    # @all_products = Product.order('created_at DESC').page(params[:page]).per(5)
+    @search = Product.order('created_at desc').page(params[:page]).per(5).ransack(params[:q])
+    @all_products = @search.result
+    @search.build_condition
 
     authorize! :read, @all_products
   end
