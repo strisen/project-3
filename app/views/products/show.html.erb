@@ -8,7 +8,7 @@
   <p><%= @searched_product.description %></p>
 
   <%=  @searched_product.price %>
-  <% if (@searched_product.user_id == current_user.id && @product_status == 0) || current_user.admin %>
+  <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
     <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
     <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
   <% else %>

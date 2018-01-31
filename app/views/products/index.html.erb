@@ -2,7 +2,10 @@
 <div class="row">
   <%= link_to "New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
 </div>
-<p>List all the products</p>
+<div class="mb-3">
+  <p>List all the products</p>
+  <%= paginate @all_products, window: 2 %>
+</div>
 <ul>
   <%@all_products.each do |indiv_product| %>
 

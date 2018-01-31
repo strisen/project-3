@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
 
+
   def index
-    @all_products = Product.all.order(created_at: :asc)
+    # @all_products = Product.all.order(created_at: :asc)
+    @all_products = Product.order('created_at DESC').page(params[:page]).per(5)
+
+    # @all_products = Kaminari.paginate_array(@all_products).page(params[:page]).per(5)
+
     authorize! :read, @all_products
   end
 
