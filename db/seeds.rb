@@ -12,18 +12,18 @@
   #   email: Faker::Internet.email,
   #   balance: rand(1000)
   # )
-  category = {
-    0 => 'Ring',
-    1 => 'Necklace'
-  }
-  Product.create(
-    name: Faker::Food.dish,
-    category: category[rand(0..1)],
-    description: Faker::Food.ingredient,
-    price: rand(1000),
-    status: 0,#rand(0..3),
-    user_id: rand(1..2)
-  )
+  # category = {
+  #   0 => 'Ring',
+  #   1 => 'Necklace'
+  # }
+  # Product.create(
+  #   name: Faker::Food.dish,
+  #   category: category[rand(0..1)],
+  #   description: Faker::Food.ingredient,
+  #   price: rand(1000),
+  #   status: 0,#rand(0..3),
+  #   user_id: rand(1..2)
+  # )
   # Purchase.create(
   #   user_id: rand(1..10),
   #   product_id: rand(1...10)
