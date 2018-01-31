@@ -1,19 +1,47 @@
-<% provide(:title, 'Individual Product') %>
+
 <% if flash[:error].present? %>
   <%= flash[:error] %>
 <% end %>
 
 <div>
   <h3><%= @searched_product.name %></h3>
-  <p><%= @searched_product.description %></p>
+  
+</div>
 
-  <%=  @searched_product.price %>
-  <% if (@searched_product.user_id == current_user.id && @product_status == 0) || current_user.admin %>
-    <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
-    <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
-  <% end %>
+<!-- obaje template -->
+
+<div class="container-fluid">
+    <div class="content-wrapper">
+		<div class="item-container">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="product col-md-3 service-image-left">
+
+						<center>
+							<img id="item-display" src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
+						</center>
+					</div>
 
 
+				</div>
+
+				<div class="col-md-7">
+					<div class="product-title"><%= @searched_product.name %></div>
+					<div class="product-desc"><%= @searched_product.description %></div>
+
+					<hr>
+					<div class="product-price"><%=  @searched_product.price %></div>
+
+					<hr>
+          <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
+            <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
+            <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
+          <% end %>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
