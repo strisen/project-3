@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @search = Product.order('created_at desc').page(params[:page]).per(5).ransack(params[:q])
     @all_products = @search.result
     @search.build_condition
-
+    # render json: @all_products
     authorize! :read, @all_products
   end
 

@@ -4,13 +4,13 @@
 </div>
 <div class="col-md-6 mt-3 mb-3">
   <%= paginate @all_products %>
-  <table>
-    <tr>
-      <th> <%= sort_link @search, :name, "Product Name"%></th>
-      <th> <%= sort_link @search, :category,  "Category" %></th>
-      <th> <%= sort_link @search, :created_at,  "Created At"%></th>
-    </tr>
-  </table>
+  <nav>
+    <ul>
+      <li> <%= sort_link @search, :name, "Product Name"%></li>
+      <li> <%= sort_link @search, :category,  "Category" %></li>
+      <li> <%= sort_link @search, :created_at,  "Created At"%></li>
+    </ul>
+  </nav>
 
 </div>
 <ul>
