@@ -45,6 +45,7 @@ class ChargesController < ApplicationController
   end
 
   def description
+    # For Transaction records on Stripe
     @description = 'E-Credit Purchase on Cash My Bling'
   end
 

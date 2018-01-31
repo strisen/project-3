@@ -1,15 +1,19 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
+
   def index
     @all_products = Product.all.order(created_at: :asc)
     authorize! :read, @all_products
   end
+
   def show
      @searched_product = Product.find(params[:id]) # .find method only by id
   end
+
   def new
     @new_product = current_user.products.new
   end
+
   def create
     @new_product = current_user.products.create(product_params)
     redirect_to products_path
@@ -24,7 +28,7 @@ class ProductsController < ApplicationController
     @searched_product = Product.find(params[:id])
     @searched_product.update(product_params)
 
-    if @searched_product.status == 2
+    if @searched_product.status == 2 && current_user.admin
       # Email to the buyer
       @purchase = Purchase.find(@searched_product.purchase_id)
       @purchasing_user = User.find(@purchase.user_id)
@@ -36,24 +40,16 @@ class ProductsController < ApplicationController
       @seller_balance = @seller.balance + @searched_product.price
       @seller.update( :balance => @seller_balance )
 
-      if current_user.admin
-        redirect_to approvals_path
-        # render json: @purchasing_user
-      else
-        redirect_to products_path
-        # render json: @purchasing_user
+      # Redirect to approvals page for admin
+      redirect_to approvals_path
 
-      end
     else
-      if current_user.admin
-        redirect_to approvals_path
-      else
-        redirect_to products_path
-      end
+      # Redirect to regular store front for customers
+      redirect_to products_path
     end
-    # redirect_to products_path
-    # render json: :status
+
   end
+
   def destroy
     Product.find(params[:id]).delete
     redirect_to products_path
