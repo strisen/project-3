@@ -2,6 +2,8 @@
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
+## Deployment
+Heroku link: https://p3bling.herokuapp.com/
 
 Things you may want to cover:
 ## ERD
