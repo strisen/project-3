@@ -1,23 +1,26 @@
-<% provide(:title, 'All products')%>
-<div class="row">
+<div class="offset-md-1 col-md-10 mt-3">
+
+  <h2><strong>Approval of products</strong></h2>
+
+  <div class="row d-flex flex-row">
+    <% @all_products.each do |product| %>
+      <% if product.status == 1 %>
+        <div class="m-3 p-3 approval-card">
+          <h3><%= product.name %></h3>
+          <div class="seller-name">
+            <%= label :seller, "Seller: " %>
+            <span><%= product.user.username %></span>
+          </div>
+          <div class="product-id">
+            <%= label :id, "Product ID: " %>
+            <span><%= product.id %></span>
+          </div>
+          <div class="action">
+            <%= link_to "Change Approval Status",edit_approval_path(product), class: "btn btn-outline-primary"%>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
 
 </div>
-<p>Approval of products</p>
-<ul>
-  <%@all_products.each do |indiv_product| %>
-
-    <% if indiv_product.status == 1 %>
-      <li>
-        <h3><%= indiv_product.name %></h3>
-        <p>
-          <%= indiv_product.description %><br>
-          <%= indiv_product.user.username %><br>
-
-          <%= link_to "Change Approval Status",edit_approval_path(indiv_product), class: "btn btn-primary"%>
-          <%#= link_to "Add to Cart",  carts_path(indiv_product), method: :create, class: 'btn btn-info'%>
-        </p>
-      </li>
-      <%end%>
-
-  <%end%>
-</ul>

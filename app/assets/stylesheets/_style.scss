@@ -100,7 +100,23 @@ body {
   // flex-wrap: wrap;
 }
 
-//***********************Show Products Page*********************************
+.form-format {
+  background: #C2E7DA;
+  border: 2px solid black;
+  border-radius: 25px;
+}
+
+.admin-functions {
+  font-weight: 1000;
+}
+
+.approval-card {
+  background-color: #BAFF29;
+  border-radius: 25px;
+  text-align: center;
+  border: 2px solid black;
+}
+
 .product-title{
   margin: 0, auto;
   text-align: center;
