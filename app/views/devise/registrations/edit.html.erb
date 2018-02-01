@@ -1,108 +1,112 @@
-<div class="col-md-12 text-center mt-2 mb-2">
-  <h1>Edit <%= resource_name.to_s.humanize %></h1>
-</div>
+<div class="offset-md-1 col-md-10 mt-5 form-format">
 
-<div class="row">
-
-  <div class="offset-md-2 col-md-5 text-left">
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
-      <div id="error_explanation">
-        <% if flash[:error].present? %>
-          <%= flash[:error] %>
-        <% end %>
-      </div>
-
-      <div class="field mb-3 form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <div class="col-md-12 text-center mt-3 mb-3">
+    <h1><strong>Edit <%= resource_name.to_s.humanize %> Profile</strong></h1>
+    <%= devise_error_messages! %>
+    <div id="error_explanation">
+      <% if flash[:error].present? %>
+        <%= flash[:error] %>
       <% end %>
+    </div>
+  </div>
 
-      <div class="field mb-3 form-group">
-        <%= f.label :new_password %>
-        <%= f.password_field :new_password, autocomplete: "off", class: "form-control" %>
+  <div class="row">
+
+    <div class="offset-md-1 col-md-5 text-left">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+        <div class="field mb-3 form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field mb-3 form-group">
+          <%= f.label :new_password %>
+          <%= f.password_field :new_password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field mb-3 form-group">
+          <%= f.label :new_password_confirmation %>
+          <%= f.password_field :new_password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="field mb-3 form-group">
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Update", class:"btn btn-outline-success"%>
+        </div>
+      <% end %>
+      <div class="mt-3 mb-3">
+        <!-- <h3>Close my account</h3> -->
+
+        <p><%= button_to "Close my account", registration_path(resource_name), data: { confirm: "Confirm Account Deletion?" }, class:"btn btn-outline-danger", method: :delete %></p>
+
+        <%#= link_to "Back", :back %>
       </div>
 
-      <div class="field mb-3 form-group">
-        <%= f.label :new_password_confirmation %>
-        <%= f.password_field :new_password_confirmation, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <div class="field mb-3 form-group">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Update", class:"btn btn-outline-success"%>
-      </div>
-    <% end %>
-    <div class="mt-3 mb-3">
-      <!-- <h3>Close my account</h3> -->
-
-      <p><%= button_to "Close my account", registration_path(resource_name), data: { confirm: "Confirm Account Deletion?" }, class:"btn btn-outline-danger", method: :delete %></p>
-
-      <%#= link_to "Back", :back %>
     </div>
 
+    <div class="offset-md-1 col-md-4 mb-1 text-left form-group">
+      <%= form_tag charges_path, method:'post', id:'payment' do %>
+
+        <article>
+          <%= label_tag(:amount, 'Amount of E-Credit to Purchase (SGD$) ') %>
+          <%= text_field_tag(:amount, '', class:"mb-3 form-control") %>
+        </article>
+        <article>
+          <%= hidden_field_tag(:stripeToken) %>
+        </article>
+
+        <script src="https://checkout.stripe.com/checkout.js"></script>
+        <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button>
+        <script>
+          var handler = StripeCheckout.configure({
+            key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+            locale: 'auto',
+            // name: 'E-Credit Purchase',
+            email: "<%= current_user.email %>",
+            description: "E-Credit Purchase",
+            token: function(token){
+              $('input#stripeToken').val(token.id)
+              $('#payment').submit();
+            }
+          })
+
+          $('.deposit').on('click', function(e){
+            e.preventDefault();
+
+            $('#error_explanation').html('')
+
+            var amount = $('input#amount').val()
+            amount = amount.replace(/\$/g, '').replace(/\,/g,'')
+            amount = parseFloat(amount)
+
+            if (isNaN(amount)) {
+              $('#error_explanation').html('<p>Please enter a valid amount in SGD$.</p>')
+            } else {
+              amount = amount * 100
+              handler.open({
+                amount: Math.round(amount)
+              })
+            }
+          })
+          $(window).on('popstate', function(){
+            handler.close();
+          })
+        </script>
+      <% end %>
+      <br>
+      <%= link_to "Purchase History", purchases_path, class: 'btn btn-outline-info'%>
+
+    </div>
   </div>
 
-  <div class="col-md-3 mb-1 text-left form-group">
-    <%= form_tag charges_path, method:'post', id:'payment' do %>
-
-      <article>
-        <%= label_tag(:amount, 'Amount of E-Credit to Purchase (SGD$) ') %>
-        <%= text_field_tag(:amount, '', class:"mb-3 form-control") %>
-      </article>
-      <article>
-        <%= hidden_field_tag(:stripeToken) %>
-      </article>
-
-      <script src="https://checkout.stripe.com/checkout.js"></script>
-      <button type="submit" class="btn btn-outline-primary deposit">Click here to Add Funds</button>
-      <script>
-        var handler = StripeCheckout.configure({
-          key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-          locale: 'auto',
-          // name: 'E-Credit Purchase',
-          email: "<%= current_user.email %>",
-          description: "E-Credit Purchase",
-          token: function(token){
-            $('input#stripeToken').val(token.id)
-            $('#payment').submit();
-          }
-        })
-
-        $('.deposit').on('click', function(e){
-          e.preventDefault();
-
-          $('#error_explanation').html('')
-
-          var amount = $('input#amount').val()
-          amount = amount.replace(/\$/g, '').replace(/\,/g,'')
-          amount = parseFloat(amount)
-
-          if (isNaN(amount)) {
-            $('#error_explanation').html('<p>Please enter a valid amount in SGD$.</p>')
-          } else {
-            amount = amount * 100
-            handler.open({
-              amount: Math.round(amount)
-            })
-          }
-        })
-        $(window).on('popstate', function(){
-          handler.close();
-        })
-      </script>
-    <% end %>
-    <br>
-    <%= link_to "Purchase History", purchases_path, class: 'btn btn-info'%>
-
-  </div>
 </div>

@@ -18,7 +18,7 @@ class ApprovalsController < ApplicationController
   def edit
     @searched_product = Product.find(params[:id])
   end
-  
+
   def reject
     @current_product = Product.find(params[:id])
     @current_product.update( :status => 3)

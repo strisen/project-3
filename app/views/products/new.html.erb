@@ -1,28 +1,35 @@
-<% provide(:title, "List an Item")%>
 <!-- <p>Form starts here</p> -->
-<%= form_for @new_product do |f| %>
-  <div class="form-group">
-    <%= f.label :name, value: 'Name: ' %>
-    <%= f.text_field :name, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :category, value: 'Category: ' %>
-    <%= f.select :category, ['Rings', 'Necklaces'], class: "form-control", id: "exampleFormControlSelect1" %>
 
-  </div>
-  <div class="form-group">
-    <%= f.label :description, value: 'Description: ' %>
-    <%= f.text_field :description, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, value: 'Price: ' %>
-    <%= f.number_field :price, min: 1, class: "form-control", required: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :picture %>
-    <%= f.text_field :picture, class: 'form-control', placeholder: 'e.g. url of the picture' %>
-  </div>
+<div class="offset-md-2 col-md-8 mt-3 form-format">
+  <div class="offset-md-1 col-md-10 mt-3 mb-3">
 
-  <%= f.submit%>
+    <h2><strong>List Your Item here!</strong></h2>
+    <%= form_for @new_product do |f| %>
+      <div class="form-group">
+        <%= f.label :name, value: 'Name: ' %>
+        <%= f.text_field :name, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :category, value: 'Category: ' %>
+        <%= f.select :category, options_for_select([ 'Rings', 'Necklaces']), {:include_blank => 'Select One'}, class: "form-control", required: true %>
+      </div>
 
-<% end %>
+      <div class="form-group">
+        <%= f.label :description, value: 'Description: ' %>
+        <%= f.text_field :description, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :price, value: 'Price: ' %>
+        <%= f.number_field :price, min: 1, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :picture %>
+        <%= f.url_field :picture, class: 'form-control', placeholder: 'e.g. url of the picture', required: true %>
+      </div>
+
+      <%= f.submit "List Product!", class: "btn btn-outline-success" %>
+
+    <% end %>
+</div>
+
+</div>
