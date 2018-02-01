@@ -36,16 +36,18 @@ class ProductsController < ApplicationController
 
     if @searched_product.status == 2 && current_user.admin
       # Email to the buyer
-      @purchase = Purchase.find(@searched_product.purchase_id)
-      @purchasing_user = User.find(@purchase.user_id)
-      UserNotificationMailer.purchase_completion(@purchasing_user, @searched_product.name).deliver_later
+      @purchase = Purchase.find_by(product_id: @searched_product.id)
+      # render json: @purchase
+      unless !@purchase
+        @purchasing_user = User.find(@purchase.user_id)
+        UserNotificationMailer.purchase_completion(@purchasing_user, @searched_product.name).deliver_later
 
-      # Email to the seller
-      @seller = User.find(@searched_product.user_id)
-      UserNotificationMailer.sale_completion(@seller, @searched_product.name).deliver_later
-      @seller_balance = @seller.balance + @searched_product.price
-      @seller.update( :balance => @seller_balance )
-
+        # Email to the seller
+        @seller = User.find(@searched_product.user_id)
+        UserNotificationMailer.sale_completion(@seller, @searched_product.name).deliver_later
+        @seller_balance = @seller.balance + @searched_product.price
+        @seller.update( :balance => @seller_balance )
+      end
       # Redirect to approvals page for admin
       redirect_to approvals_path
 
