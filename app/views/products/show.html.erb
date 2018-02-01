@@ -2,46 +2,50 @@
 <% if flash[:error].present? %>
   <%= flash[:error] %>
 <% end %>
-
+<br>
 <div>
-  <h3><%= @searched_product.name %></h3>
+  <h3 class="product-title"><%= @searched_product.name %></h3>
 
 </div>
-
+<hr>
 <!-- obaje template -->
 
-<div class="container-fluid">
-    <div class="content-wrapper">
+
+  <div class="content-wrapper">
 		<div class="item-container">
 			<div class="container">
 				<div class="col-md-12">
-					<div class="product col-md-3 service-image-left">
+
 
 						<center>
-							<%= image_tag @searched_product.picture %></img>
+							<%= image_tag @searched_product.picture,:size => "600x450" %>
 						</center>
-					</div>
+
 
 
 				</div>
 
-				<div class="col-md-7">
-					<div class="product-title"><%= @searched_product.name %></div>
-					<div class="product-desc"><%= @searched_product.description %></div>
+
+          <hr>
+					<div class="mx-auto" style="width: 850px;"> <%= @searched_product.description %></div>
 
 					<hr>
-					<div class="product-price"><%=  @searched_product.price %></div>
+					<div class="product-price">
+            <span class="product-price-word">Price: </span>
+            <span class="product-price-number"><%=  @searched_product.price %> credits</span>
+          </div>
 
 					<hr>
-          <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
-            <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
-            <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
-          <% else %>
-            <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
-          <% end %>
-				</div>
+          <div class="show-product-btn">
+            <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
+              <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
+              <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
+            <% else %>
+              <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
+            <% end %>
+          </div>
+
 			</div>
 		</div>
 
-	</div>
-</div>
+ </div>
