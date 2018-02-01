@@ -1,46 +1,39 @@
-
-<% if flash[:error].present? %>
-  <%= flash[:error] %>
-<% end %>
-<br>
 <div>
   <h3 class="product-title"><%= @searched_product.name %></h3>
-
 </div>
+
 <hr>
-<!-- obaje template -->
 
-
-  <div class="content-wrapper">
-		<div class="item-container">
-			<div class="container">
-				<div class="col-md-12">
-					<center>
-						<%= image_tag @searched_product.picture, :size => "600x450" %>
-					</center>
-				</div>
-
-
-          <hr>
-					<div class="mx-auto" style="width: 850px;"> <%= @searched_product.description %></div>
-
-					<hr>
-					<div class="product-price">
-            <span class="product-price-word">Price: </span>
-            <span class="product-price-number"><%=  @searched_product.price %> credits</span>
-          </div>
-
-					<hr>
-          <div class="show-product-btn">
-            <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
-              <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
-              <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
-            <% else %>
-              <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
-            <% end %>
-          </div>
-
+<div class="content-wrapper">
+	<div class="item-container">
+		<div class="container">
+			<div class="col-md-12">
+				<center>
+					<%= image_tag @searched_product.picture, :size => "600x450" %>
+				</center>
 			</div>
-		</div>
 
- </div>
+      <hr>
+
+			<div class="mx-auto" style="width: 850px;"> <%= @searched_product.description %></div>
+
+      <hr>
+
+			<div class="product-price">
+        <span class="product-price-word">Price: </span>
+        <span class="product-price-number"><%=  @searched_product.price %> credits</span>
+      </div>
+
+			<hr>
+
+      <div class="show-product-btn">
+        <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
+          <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
+          <%= link_to "Remove Listing", product_path, method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
+        <% end %>
+      </div>
+		</div>
+	</div>
+</div>

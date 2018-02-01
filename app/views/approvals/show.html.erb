@@ -3,6 +3,6 @@
   <h3><%= @searched_product.name %></h3>
   <p><%= @searched_product.description %></p>
   <%=  @searched_product.price %>
-    <%= link_to "Approve Listing",approval_path, method: :create, class: 'btn btn-info'%>
-    <%= link_to "Reject Listing", approval_path, method: :reject, class: 'btn btn-danger'%>
+  <%= link_to "Approve Listing",approval_path, method: :create, class: 'btn btn-info'%>
+  <%= link_to "Reject Listing", approval_path, method: :reject, class: 'btn btn-danger'%>
 </div>
