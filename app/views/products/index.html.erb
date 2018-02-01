@@ -12,29 +12,23 @@
   </nav>
 
 </div>
-<div class="container" id="tourpackages-carousel">
-
-  <div class="row display-flex">
+<div class="offset-md-1 col-md-10 mt-3">
+  <div class="row d-flex flex-row">
     <%@all_products.each do |indiv_product| %>
       <% if indiv_product.status == 0 %>
-
-          <div class="col-xs-18 col-sm-6 col-md-3">
-            <div class="thumbnail">
-                <div class="thumbnail-pic" ><%= image_tag indiv_product.picture, :size => "260x200" %></div>
-                <div class="caption">
-                  <p class="thumbnail-name"><%= indiv_product.name %></p>
-                  <p class="thumbnail-price">Price: <%= indiv_product.price %> credits<br></p>
-                  <!-- <p class="thumbnail-des"><#%= indiv_product.description %></p> -->
-
-                </div>
-                <p class="view-btn">  <%= link_to "View", product_path(indiv_product), class: "btn btn-info btn-xs"%></p>
-
+        <div class="col-xs-18 col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <div class="thumbnail-pic" >
+              <%= image_tag indiv_product.picture, :size => "260x200" %>
             </div>
+            <div class="caption">
+              <p class="thumbnail-name"><%= indiv_product.name %></p>
+              <p class="thumbnail-price">Price: <%= indiv_product.price %> credits<br></p>
+            </div>
+            <%= link_to "View", product_path(indiv_product), class: "btn btn-info btn-lg btn-block"%>
           </div>
         </div>
-      </div>
+      <%end%>
     <%end%>
-  <%end%>
+  </div>
 </div>
-
-</div><!-- End container -->
