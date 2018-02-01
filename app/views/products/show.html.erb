@@ -5,7 +5,7 @@
 
 <div>
   <h3><%= @searched_product.name %></h3>
-  
+
 </div>
 
 <!-- obaje template -->
@@ -29,7 +29,6 @@
 					<div class="product-title"><%= @searched_product.name %></div>
 					<div class="product-desc"><%= @searched_product.description %></div>
 
-<<<<<<< HEAD
   <%=  @searched_product.price %>
   <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
     <%= link_to "Edit Listing", edit_product_path, class: 'btn btn-info' %>
@@ -37,10 +36,6 @@
   <% else %>
     <%= link_to "Purchase", "/purchases?id=#{ @searched_product.id }", method: :create, class: 'btn btn-info' %>
   <% end %>
-=======
-					<hr>
-					<div class="product-price"><%=  @searched_product.price %></div>
->>>>>>> 1b63edb0a4ef4964d5c0b77e2d755dc7c59d7840
 
 					<hr>
           <% if (@searched_product.user_id == current_user.id && @searched_product.status == 0) || current_user.admin %>
