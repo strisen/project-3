@@ -44,7 +44,7 @@ class PurchasesController < ApplicationController
       redirect_to purchase_path(@current_purchase.id)
     else
       redirect_to product_path(@current_product.id)
-      flash[:alert] = "You do not have sufficient funds"
+      flash[:alert] = "You do not have sufficient credits."
     end
 
   end
