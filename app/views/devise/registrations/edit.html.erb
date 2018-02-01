@@ -17,7 +17,7 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
         <div class="field mb-3 form-group">
-          <%= f.label :email %>
+          <%= f.label :email, "Email:" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
@@ -26,17 +26,17 @@
         <% end %>
 
         <div class="field mb-3 form-group">
-          <%= f.label :new_password %>
+          <%= f.label :new_password, "New Password:" %>
           <%= f.password_field :new_password, autocomplete: "off", class: "form-control" %>
         </div>
 
         <div class="field mb-3 form-group">
-          <%= f.label :new_password_confirmation %>
+          <%= f.label :new_password_confirmation, "Confirm New Password:" %>
           <%= f.password_field :new_password_confirmation, autocomplete: "off", class: "form-control" %>
         </div>
 
         <div class="field mb-3 form-group">
-          <%= f.label :current_password %>
+          <%= f.label :current_password, "Current Password:" %>
           <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
         </div>
 
@@ -58,7 +58,7 @@
       <%= form_tag charges_path, method:'post', id:'payment' do %>
 
         <article>
-          <%= label_tag(:amount, 'Amount of E-Credit to Purchase (SGD$) ') %>
+          <%= label_tag(:amount, 'Amount of E-Credit to Purchase (SGD$): ') %>
           <%= text_field_tag(:amount, '', class:"mb-3 form-control") %>
         </article>
         <article>
