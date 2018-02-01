@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 4424720ed605ba28a742f3ff2291b1321274101d
 <div class="row">
   <%= link_to "New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
 </div>
@@ -16,9 +12,9 @@
   </nav>
 
 </div>
-<div class="container">
+<div class="container" >
 
-  <div class="row ">
+  <div class="row display-flex">
     <%@all_products.each do |indiv_product| %>
       <% if indiv_product.status == 0 %>
 
@@ -35,8 +31,7 @@
 
             </div>
           </div>
-        </div>
-      </div>
+
     <%end%>
   <%end%>
 </div>
