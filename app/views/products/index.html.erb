@@ -1,4 +1,4 @@
-<% provide(:title, 'All products')%>
+
 <div class="row">
   <%= link_to "New Product", new_product_path, class: "btn btn-primary btn-lg btn-block" %>
 </div>
@@ -13,9 +13,9 @@
   </nav>
 
 </div>
-<div class="container" id="tourpackages-carousel">
+<div class="container">
 
-  <div class="row display-flex">
+  <div class="row ">
     <%@all_products.each do |indiv_product| %>
       <% if indiv_product.status == 0 %>
 
