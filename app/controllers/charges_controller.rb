@@ -28,7 +28,10 @@ class ChargesController < ApplicationController
         charge_id: @new_charge_id
       )
       @new_transaction.save
+
     end
+
+    # Notify user of successful transaction
     flash[:notice] = "Successfully Bought $#{@amount/100} in E-Credits!"
     redirect_to edit_user_registration_path
 

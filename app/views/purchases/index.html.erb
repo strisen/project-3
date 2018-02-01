@@ -1,21 +1,18 @@
 <div class="offset-md-1 col-md-10 mt-3">
-
-  <h1>Purchase History</h1>
-
+  <h1><strong>Purchase History</strong></h1>
   <div class="row d-flex flex-row">
     <% @all_purchases.each do |purchase| %>
       <div class="m-3 p-3 approval-card">
-        <h3><%= purchase.product.name %></h3>
+        <h3><strong><%= purchase.product.name %></strong></h3>
         <div class="price-name">
           <%= label :price, "Price: " %>
-          <span>SGD$<%= purchase.product.price %></span>
+          <span><%= purchase.product.price %> credits</span>
         </div>
-        <div class="product-id">
+        <div class="purchase date">
           <%= label :purchase_date, "Date of Purchase: " %>
           <span><%= purchase.created_at %></span>
         </div>
       </div>
     <% end %>
   </div>
-
 </div>

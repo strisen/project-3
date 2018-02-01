@@ -1,14 +1,23 @@
-<h1>Purchase Confirmed</h1>
+<div class="offset-md-3 col-md-6 mt-3">
 
-<div>
-  <h3>Your purchase of the product</h3>
-  <%= Product.find(@current_purchase).name %>
-  <h3>at the price of:</h3>
-  <%= Product.find(@current_purchase).price %>
-  <h3>has been confirmed. It will be sent for appriasal and we will inform you shortly</h3>
+  <div class="purchase-display">
 
+    <h1><strong>Purchase Confirmed</strong></h1>
 
+    <div>
+      <p>Your Purchase of the product: </p>
+      <p><strong><%= @current_purchase.name %></strong></p>
+      <p>at the price of:</p>
+      <p><strong><%= @current_purchase.price %> credits</strong></p>
+      <p>has been confirmed.</p>
+      <p>It will be sent for appriasal and we will inform you shortly.</p>
+    </div>
 
-  <%= link_to "Back to Store", products_path,class:'btn btn-info'%>
-  <%= link_to "Purchase History", purchases_path, class: 'btn btn-info'%>
+    <div>
+      <%= link_to "Back to Store", products_path,class:'btn btn-info'%>
+      <%= link_to "Purchase History", purchases_path, class: 'btn btn-info'%>
+    </div>
+
+  </div>
+
 </div>

@@ -6,8 +6,10 @@ class PurchasesController < ApplicationController
   end
 
   def show
-     @current_purchase = current_user.purchases.last.product_id
-     @latest_purchase = Purchase.find(params[:id]) # .find method only by id
+    @purchase = current_user.purchases.last.product_id
+    @current_purchase = Product.find(@purchase)
+    # render json: @current_purchase
+    @latest_purchase = Purchase.find(params[:id]) # .find method only by id
   end
 
   def new
@@ -42,7 +44,7 @@ class PurchasesController < ApplicationController
       redirect_to purchase_path(@current_purchase.id)
     else
       redirect_to product_path(@current_product.id)
-      flash[:alert] = "You do not have sufficient funds"
+      flash[:alert] = "You do not have sufficient credits."
     end
 
   end

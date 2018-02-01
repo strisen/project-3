@@ -17,35 +17,25 @@ body {
   width: 100vw
 }
 
-//***********************Product Index Page*********************************
-
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,700,400italic);
-
-// font-family: 'Open Sans', sans-serif;
-
 html {
   font-family: 'Open Sans', sans-serif;
 }
 
 body {
-  min-height: 300px;
-  // padding-top: 70px;
   font-family: 'Open Sans', sans-serif;
-  background-image: url("img_tree.png")
-
-
 }
 
 .thumbnail {
-    position: relative;
-    padding: 0px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: white;
-    height:350px;
-    width:100%;
-    border-radius: 25px;
+  position: relative;
+  padding: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  height:350px;
+  width:100%;
+  border-radius: 25px;
 }
+
 .thumbnail-name{
   display: block;
   text-align: center;
@@ -111,8 +101,8 @@ body {
 }
 
 .thumbnail img {
-    width: 100%;
-    border-radius: 25px 25px 0 0;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
 }
 .row.display-flex {
   // display: flex;
@@ -123,6 +113,12 @@ body {
   background: #C2E7DA;
   border: 2px solid black;
   border-radius: 25px;
+}
+
+.flavor-text {
+  border: 4px solid black;
+  border-radius: 50px;
+  padding: 20px;
 }
 
 .admin-functions {
@@ -140,27 +136,31 @@ body {
   margin: 0, auto;
   text-align: center;
 }
+
 .item-container {
 
 }
-.product-price{
+
+.product-price {
   margin-left: 130px;
 }
-.product-price-word{
+
+.product-price-word {
   // font-weight: bold;
   font-size: 18px;
-
 }
-.product-price-number{
+
+.product-price-number {
   font-weight: bold;
   font-size: 24px;
   text-decoration: underline;
-
 }
-.show-product-btn{
+
+.show-product-btn {
     margin-left: 130px;
     margin-bottom: 20px;
 }
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -176,4 +176,12 @@ body {
 
 .paginator {
   text-align: center
+}
+
+.purchase-display {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 25px;
 }

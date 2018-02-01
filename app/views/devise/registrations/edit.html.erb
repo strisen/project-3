@@ -1,4 +1,4 @@
-<div class="offset-md-1 col-md-10 mt-5 form-format">
+<div class="offset-md-1 col-md-10 mt-5 pb-3 form-format">
 
   <div class="col-md-12 text-center mt-3 mb-3">
     <h1><strong>Edit <%= resource_name.to_s.humanize %> Profile</strong></h1>
@@ -18,26 +18,22 @@
 
         <div class="field mb-3 form-group">
           <%= f.label :email, "Email:" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
         </div>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
 
         <div class="field mb-3 form-group">
           <%= f.label :new_password, "New Password:" %>
-          <%= f.password_field :new_password, autocomplete: "off", class: "form-control" %>
+          <%= f.password_field :new_password, autocomplete: "off", class: "form-control", required: true %>
         </div>
 
         <div class="field mb-3 form-group">
           <%= f.label :new_password_confirmation, "Confirm New Password:" %>
-          <%= f.password_field :new_password_confirmation, autocomplete: "off", class: "form-control" %>
+          <%= f.password_field :new_password_confirmation, autocomplete: "off", class: "form-control", required: true %>
         </div>
 
         <div class="field mb-3 form-group">
           <%= f.label :current_password, "Current Password:" %>
-          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control", required: true %>
         </div>
 
         <div class="actions">
@@ -45,11 +41,10 @@
         </div>
       <% end %>
       <div class="mt-3 mb-3">
-        <!-- <h3>Close my account</h3> -->
 
         <p><%= button_to "Close my account", registration_path(resource_name), data: { confirm: "Confirm Account Deletion?" }, class:"btn btn-outline-danger", method: :delete %></p>
 
-        <%#= link_to "Back", :back %>
+        <%= link_to "Back", :back, class:"btn btn-outline-primary" %>
       </div>
 
     </div>
