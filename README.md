@@ -1,7 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
+Imagine when your engagement plans go awry, and your relationship breaks down. At that point, you probably are still left with a ring that you just bought recently, but are unable to get a buyback value even remotely close to the price that you bought it at. Our site hopes to be a platform to address that problem, by linking up buyers hoping to get a good deal for next-to-brand-new rings with sellers hoping to salvage the value of their rings that they no longer have any use for, resulting in a win-win situation for both parties.
+
+## Objective
+To provide an affordable and safe platform for buyers and sellers of jewellery to purchase and sell their jewellery at better rates than they are offered at retailers.
+
+## How it Works
+In our site, prospective buyers and sellers can view listings without registering, but must register an account if they want to engage in any form of transaction on our site. Once registered, users can make purchases, list items for sale and communicate directly with the other user they are buying from or selling to.
+
+All transactions on our site are made through E-credits. Buyers have to convert their cash into credits through our website, and use those credits to purchase products from our store.
+
+
+
+## Getting Started
+
+### Prerequisites
+
+This project is built with [Ruby on Rails](http://rubyonrails.org/) and [PostgreSQL](https://www.postgresql.org/) with a Model-View-Controller (MVC) architecture.
+
+### How to Use
+
+Fork and clone this repository into your own directory. Install the Gem files used in this project by entering the following code in your terminal:
+
+``bundle install``
+
+following that run the following code"
+``rails db:migrate``
+and then
+``rails s`` to start your server
+
+
 ## Deployment
 Heroku link: https://p3bling.herokuapp.com/
 
@@ -21,17 +50,57 @@ Things you may want to cover:
 
 * As a housewife in urgent need of cash, I need a platform to sell my jewellery at better rates than that being offered to me at pawnshops.
 
+## Development Log
 
-## Process Flow
-Imagine when your engagement plans go awry, and your relationship breaks down. At that point, you probably are still left with a ring that you just bought recently, but are unable to get a buyback value even remotely close to the price that you bought it at. Our site hopes to be a platform to address that problem, by linking up buyers hoping to get a good deal for next-to-brand-new rings with sellers hoping to salvage the value of their rings that they no longer have any use for, resulting in a win-win situation for both parties.
+**17 Jan 2018**
+* Came out with the idea of Cash My Bling
 
-In our site, prospective buyers and sellers can view listings without registering, but must register an account if they want to engage in any form of transaction on our site. Once registered, users can make purchases, list items for sale and communicate directly with the other user they are buying from or selling to.
+**19 Jan 2018**
+* Add README with user stories, use case, ERD and wireframe
 
-A typical seller would list their item at a price of their choosing and then include an image and a description to make clear the type of product and its condition. They may also want to include a background/story behind the product if they are comfortabe with doing so. If a buyer wishes to purchase the product, we will contact the seller and provide them with the address to send their item to, where we will then have a jeweller to verify its authenticity. If the product is proven to be genuine, we will send the product over to the buyer, and the funds sent from the buyer will be forwarded to the seller. The transaction will then be closed until either party raises any issues.
+**21 Jan 2018**
+* Add working home page
+* First push onto Heroku
 
-A typical buyer would, after catching a product that they fancy, add the item to their cart and confirm their purchase. After giving us their purchase details, their money will be held by us while we get their purchase verified. Once the item is proven to be genuine, it will be shipped to the buyer.
+**22 Jan 2018**
+* Further touched up on existing pages
 
-Both buyers and sellers can communicate with each other at any point during or after the transaction.
+**23 Jan 2018**
+* Added Devise to facilitate the registration and login process for users
+* Edit our ERD diagram
+* Created models based on our edited ERD diagram
+
+**24 Jan 2018**
+* Added products controller
+
+**24 Jan 2018**
+* Added purchases controller
+* Modified products controller
+
+**27 Jan 2018**
+* Added Stripe payments system
+* Added charges controller and transaction model
+
+**28 Jan 2018**
+* Experimented with a shopping cart model
+
+**29 Jan 2018**
+* Discarded shopping cart model
+* Ensured that the pages worked and CRUD functionality is present
+* Finalized the methods for all controllers until this point
+
+**30 Jan 2018**
+* Added notifications to users when purchases are made
+* Added statuses for products
+* Added approval controller
+
+**31 Jan 2018**
+* Improved CSS
+* Added sorting and pagination
+
+**1 Feb 2018**
+* Further touched on the CSS and functionality
+* Cleaned up the code
 
 ## Wireframes
 ![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/home.png)
