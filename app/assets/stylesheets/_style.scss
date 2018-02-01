@@ -61,6 +61,21 @@ body {
   text-overflow: ellipsis;
 }
 
+.thumbnail-category {
+  display: block;
+  text-align: center;
+  display: -webkit-box;
+  width: 100%;
+  height: 20px;
+  font-size: 12px;
+  margin: auto;
+  /* line-height: 1; */
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .thumbnail-price{
   display: block;
   text-align: center;
@@ -147,14 +162,18 @@ body {
     margin-bottom: 20px;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  height: 40px;
+  line-height: 40px;
   background-color: #f5f5f5;
 }
 .footer-text {
   text-align: left;
   cursor: default
+}
+
+.paginator {
+  text-align: center
 }
