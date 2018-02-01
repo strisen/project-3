@@ -3,19 +3,15 @@
 ## Introduction
 Imagine when your engagement plans go awry, and your relationship breaks down. At that point, you probably are still left with a ring that you just bought recently, but are unable to get a buyback value even remotely close to the price that you bought it at. Our site hopes to be a platform to address that problem, by linking up buyers hoping to get a good deal for next-to-brand-new rings with sellers hoping to salvage the value of their rings that they no longer have any use for, resulting in a win-win situation for both parties.
 
-##Objective
-* To provide an affordable and safe platform for buyers and sellers of jewellery to purchase and sell their jewellery at better rates than they are offered at retailers.
+## Objective
+To provide an affordable and safe platform for buyers and sellers of jewellery to purchase and sell their jewellery at better rates than they are offered at retailers.
 
 ## How it Works
 In our site, prospective buyers and sellers can view listings without registering, but must register an account if they want to engage in any form of transaction on our site. Once registered, users can make purchases, list items for sale and communicate directly with the other user they are buying from or selling to.
 
 All transactions on our site are made through E-credits. Buyers have to convert their cash into credits through our website, and use those credits to purchase products from our store.
 
-### Seller Instructions
-A typical seller would list their item at a price of their choosing and then include an image and a description to make clear the type of product and its condition. If a buyer wishes to purchase the product, we will contact the seller and provide them with the address to send their item to, where we will then have a jeweller to verify its authenticity. If the product is proven to be genuine, we will send the product over to the buyer, and the funds sent from the buyer will be forwarded to the seller. The transaction will then be closed until either party raises any issues.
 
-### Buyer Instructions
-A typical buyer would, after catching a product that they fancy, add the item to their cart and confirm their purchase. After giving us their purchase details, their money will be held by us while we get their purchase verified. Once the item is proven to be genuine, it will be shipped to the buyer.
 
 ## Getting Started
 
@@ -32,9 +28,7 @@ Fork and clone this repository into your own directory. Install the Gem files us
 following that run the following code"
 ``rails db:migrate``
 and then
-``rails s``
-
-to start your server
+``rails s`` to start your server
 
 
 ## Deployment
