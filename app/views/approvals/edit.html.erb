@@ -1,8 +1,11 @@
-<div class="container">
-  <h1>Change Status </h1>
-  <h2>Key: 0: Listed 1: Pending 2: Approved 3: Rejected </h2>
+<div class="offset-md-3 col-md-6 p-3 mt-3 form-format">
+  <h2 class="m-3"><strong>Approval Status</strong></h2>
+  <h3 class="m-3"><strong>Key:</strong> 0: Listed 1: Pending 2: Approved 3: Rejected </h3>
   <%= form_for @searched_product do |f| %>
-    <%= f.text_field :status %>
-<%= f.submit %>
+    <div class="form-group m-3">
+      <%= f.label :status, value: 'Category: ' %>
+      <%= f.select :category, options_for_select([ 0, 1, 2, 3 ]), {:include_blank => 'Select One'}, class: "form-control", required: true %>
+    </div>
+    <%= f.submit class: "btn btn-outline-success m-3"%>
 <% end %>
 </div>
