@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180128072505) do
     t.string "category"
     t.string "description"
     t.float "price"
+    t.string "picture"
     t.integer "status", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
