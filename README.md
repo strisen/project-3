@@ -36,10 +36,10 @@ and then
 
 ## ERD
 
-![alt text](https://github.com/empludo/project-3/blob/master/finalerd.png)
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/finalerd.png)
 
 ## Flowchart
-![alt text](https://github.com/empludo/project-3/blob/master/finalflowchart.png)
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/finalflowchart.png)
 
 ## User Stories
 * As a newly minted single who wants to sell his recently bought engagement ring, I want a place to sell my relatively new ring at a price that more competitive than those currently being offered by pawnshops.
