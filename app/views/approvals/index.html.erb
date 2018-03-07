@@ -6,7 +6,9 @@
     <% @all_products.each do |product| %>
       <% if product.status == 1 %>
         <div class="m-3 p-3 approval-card">
+          <%= image_tag product.picture, :size => "260x200", class: "mb-3" %>
           <h3><%= product.name %></h3>
+          <p><%= product.description %></p>
           <div class="seller-name">
             <%= label :seller, "Seller: " %>
             <span><%= product.user.username %></span>

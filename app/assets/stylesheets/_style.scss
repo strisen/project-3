@@ -185,3 +185,10 @@ body {
   border: 1px solid black;
   border-radius: 25px;
 }
+
+@media (max-width: 600px) {
+  body {
+    // height: 90vh;
+    width: 100%;
+  }
+}

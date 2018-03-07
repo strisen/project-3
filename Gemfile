@@ -64,3 +64,4 @@ gem 'rails_admin', '~> 1.2' # For admin console
 gem 'cancancan', '~> 2.0' # For access restrictions
 gem 'kaminari-bootstrap'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'font-awesome-rails'
