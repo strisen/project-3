@@ -1,4 +1,6 @@
 # README
+## Deployment
+Heroku link: https://p3bling.herokuapp.com/
 
 ## Introduction
 Imagine when your engagement plans go awry, and your relationship breaks down. At that point, you probably are still left with a ring that you just bought recently, but are unable to get a buyback value even remotely close to the price that you bought it at. Our site hopes to be a platform to address that problem, by linking up buyers hoping to get a good deal for next-to-brand-new rings with sellers hoping to salvage the value of their rings that they no longer have any use for, resulting in a win-win situation for both parties.
@@ -31,13 +33,13 @@ and then
 ``rails s`` to start your server
 
 
-## Deployment
-Heroku link: https://p3bling.herokuapp.com/
 
-Things you may want to cover:
 ## ERD
 
-![alt text](https://github.com/empludo/project-3/blob/master/erd.png)
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/finalerd.png)
+
+## Flowchart
+![alt text](https://github.com/empludo/project-3/blob/master/app/assets/images/finalflowchart.png)
 
 ## User Stories
 * As a newly minted single who wants to sell his recently bought engagement ring, I want a place to sell my relatively new ring at a price that more competitive than those currently being offered by pawnshops.
